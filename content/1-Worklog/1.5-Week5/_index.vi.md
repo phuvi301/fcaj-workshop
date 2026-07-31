@@ -13,21 +13,21 @@ reportType: worklog
 
 ### Mục tiêu tuần 5:
 
-* Tìm hiểu Cơ sở dữ liệu quan hệ (Amazon RDS), Cơ sở dữ liệu NoSQL (Amazon DynamoDB) và Bộ cân bằng tải (ALB).
-* Thực hành tạo cơ sở dữ liệu RDS MySQL độ sẵn sàng cao, bảng DynamoDB và định tuyến lưu lượng với Application Load Balancer.
+* Tìm hiểu kiến trúc Serverless Web Application (AWS Lambda, API Gateway) và kỹ thuật đóng gói ứng dụng với Docker & ECR.
+* Phát triển hệ thống Backend RESTful APIs (FastAPI) cho dự án CodExecute, tích hợp xác thực JWT và kết nối DynamoDB.
 
 ### Các công việc cần triển khai trong tuần này:
 | Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
 | --- | --- | --- | --- | --- |
-| 2 | - Tìm hiểu Amazon RDS (Kiến trúc Multi-AZ, DB Subnet Group) và Amazon DynamoDB (Khóa chính Partition/Sort Key) | 13/07/2026 | 13/07/2026 | <https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html> |
-| 3 | - Tìm hiểu Elastic Load Balancer (ELB): Application Load Balancer (ALB), Target Group và Listener Rules | 14/07/2026 | 14/07/2026 | <https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html> |
-| 4 | - **Thực hành:** <br>&emsp; + Tạo DB Subnet Group và khởi tạo RDS MySQL ở Private Subnet <br>&emsp; + Kết nối ứng dụng EC2 vào RDS MySQL | 15/07/2026 | 15/07/2026 | <https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html> |
-| 5 | - **Thực hành:** <br>&emsp; + Thử nghiệm RDS Multi-AZ failover & tạo DB Snapshot <br>&emsp; + Khởi tạo bảng DynamoDB và thực thi các lệnh CRUD dữ liệu qua Python SDK (boto3) | 16/07/2026 | 16/07/2026 | <https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html> |
-| 6 | - **Thực hành:** <br>&emsp; + Dựng Application Load Balancer (ALB) ở Public Subnets <br>&emsp; + Đăng ký máy chủ EC2 vào Target Group và kiểm tra cân bằng tải HTTP | 17/07/2026 | 17/07/2026 | <https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html> |
+| 2 | - Tìm hiểu kiến trúc Serverless Web API: Mangum ASGI Adapter, API Gateway HTTP API Proxy Integration | 13/07/2026 | 13/07/2026 | <https://docs.aws.amazon.com/lambda/latest/dg/welcome.html> |
+| 3 | - Tìm hiểu cơ chế xác thực JWT Token & đăng nhập qua OAuth Providers (Google/GitHub) | 14/07/2026 | 14/07/2026 | <https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-integrate-with-cognito.html> |
+| 4 | - **Thực hành:** <br>&emsp; + Đóng gói ứng dụng FastAPI backend thành Container Image và đẩy lên AWS ECR repository <br>&emsp; + Tạo hàm AWS Lambda (API Handler) từ ECR Container Image | 15/07/2026 | 15/07/2026 | <https://docs.aws.amazon.com/lambda/latest/dg/images-create.html> |
+| 5 | - **Thực hành:** <br>&emsp; + Tạo API Gateway HTTP API và liên kết với Lambda API Handler <br>&emsp; + Cấu hình CORS policy cho phép kết nối từ React Frontend | 16/07/2026 | 16/07/2026 | <https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api.html> |
+| 6 | - **Thực hành:** <br>&emsp; + Phát triển các API Endpoints: Auth API, Problemset List, Code Run API, Post/Comment APIs <br>&emsp; + Kiểm thử API qua Postman | 17/07/2026 | 17/07/2026 | <https://fastapi.tiangolo.com/> |
 
 
 ### Kết quả đạt được tuần 5:
 
-* Triển khai thành công cơ sở dữ liệu quan hệ bảo mật độ sẵn sàng cao (RDS MySQL Multi-AZ) trong phân vùng riêng tư.
-* Nắm vững tư duy NoSQL và thao tác dữ liệu lập trình với Amazon DynamoDB SDK.
-* Định tuyến và điều phối lưu lượng truy cập cân bằng giữa các máy chủ Web bằng Application Load Balancer.
+* Đóng gói thành công ứng dụng FastAPI backend lên AWS ECR và triển khai chạy trên AWS Lambda.
+* Khởi tạo và cấu hình API Gateway HTTP API định tuyến thông suốt từ Frontend tới Backend.
+* Hoàn thiện hệ thống RESTful APIs phục vụ đầy đủ các chức năng quản lý bài tập, bài viết mạng xã hội và thực thi chạy thử code.

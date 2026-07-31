@@ -18,21 +18,21 @@ reportType: worklog
 
 ### Week 3 Objectives:
 
-* Understand Amazon Virtual Private Cloud (VPC) core networking concepts.
-* Learn CIDR block planning, Public vs Private Subnets, Internet Gateway, NAT Gateway, Route Tables, and Network Security (Security Groups & Bastion Host).
+* Understand Amazon Virtual Private Cloud (VPC) & Amazon CloudFront CDN architecture.
+* Learn Multi-AZ Subnet planning, AWS WAF perimeter protection, and React Frontend distribution via CloudFront.
 
 ### Tasks to be carried out this week:
 | Day | Task | Start Date | Completion Date | Reference Material |
 | --- | --- | --- | --- | --- |
-| 2 | - Learn VPC fundamentals: IPv4 CIDR Blocks (`10.0.0.0/16`), Subnetting (Public/Private Subnets across multi-AZ) | 06/29/2026 | 06/29/2026 | <https://docs.aws.amazon.com/vpc/latest/userguide/configure-your-vpc.html> |
-| 3 | - Learn Internet Gateway (IGW) and Route Tables (Local routing & Default `0.0.0.0/0` internet route) | 06/30/2026 | 06/30/2026 | <https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html> |
-| 4 | - **Practice:** <br>&emsp; + Create a Custom VPC <br>&emsp; + Provision 2 Public Subnets & 2 Private Subnets <br>&emsp; + Attach Internet Gateway and configure Public Route Table | 07/01/2026 | 07/01/2026 | <https://docs.aws.amazon.com/vpc/latest/userguide/vpc-subnets-routing.html> |
-| 5 | - **Practice:** <br>&emsp; + Provision NAT Gateway in Public Subnet <br>&emsp; + Configure Private Route Table to route outbound traffic via NAT Gateway | 07/02/2026 | 07/02/2026 | <https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html> |
-| 6 | - **Practice:** <br>&emsp; + Launch Bastion Host in Public Subnet <br>&emsp; + Configure stateful Security Groups and SSH into EC2 instance in Private Subnet | 07/03/2026 | 07/03/2026 | <https://docs.aws.amazon.com/vpc/latest/userguide/vpc-security-groups.html> |
+| 2 | - Learn VPC fundamentals: IPv4 CIDR Blocks (`10.0.0.0/16`), Subnet planning (2 Public Subnets & 2 Private Subnets across Multi-AZ) | 06/29/2026 | 06/29/2026 | <https://docs.aws.amazon.com/vpc/latest/userguide/configure-your-vpc.html> |
+| 3 | - Learn Amazon CloudFront CDN: Edge Locations, Cache Behaviors, Custom Domain & HTTPS SSL/TLS Certificates | 06/30/2026 | 06/30/2026 | <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Welcome.html> |
+| 4 | - **Practice:** <br>&emsp; + Create Custom VPC, attach Internet Gateway & configure Route Tables <br>&emsp; + Configure Security Groups for internal environment | 07/01/2026 | 07/01/2026 | <https://docs.aws.amazon.com/vpc/latest/userguide/vpc-subnets-routing.html> |
+| 5 | - **Practice:** <br>&emsp; + Create CloudFront Distribution pointing to S3 Static Web Bucket for CodExecute React Frontend | 07/02/2026 | 07/02/2026 | <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/DistributionConfig.html> |
+| 6 | - **Practice:** <br>&emsp; + Configure CloudFront Cache Behavior forwarding `/api/*` to API Gateway <br>&emsp; + Enable AWS WAF Web ACL with Rate Limiting rules against DDoS/Spam | 07/03/2026 | 07/03/2026 | <https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html> |
 
 
 ### Week 3 Achievements:
 
-* Designed and built a multi-AZ custom VPC architecture with isolated Public and Private Subnets.
-* Configured Internet Gateway and NAT Gateway for controlled inbound/outbound internet routing.
-* Implemented Bastion Host jump server and Security Groups for secure remote management of private workloads.
+* Designed and built multi-AZ Custom VPC isolating Public and Private network environments.
+* Successfully distributed React Frontend application via CloudFront CDN for low-latency Edge delivery.
+* Configured API routing through CloudFront and enabled AWS WAF perimeter protection against Layer 7 attacks.

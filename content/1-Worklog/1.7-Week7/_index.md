@@ -18,21 +18,21 @@ reportType: worklog
 
 ### Week 7 Objectives:
 
-* Consolidate all learned AWS core services into an end-to-end 3-Tier Production Web Architecture on AWS.
-* Conduct security auditing, infrastructure load testing, final report compilation, and internship capstone evaluation.
+* Automate end-to-end CodExecute infrastructure via Infrastructure as Code (AWS SAM/Terraform), perform load testing, and optimize operating costs.
+* Audit system-wide security, defend Capstone project solution, and complete the final 7-week internship documentation.
 
 ### Tasks to be carried out this week:
 | Day | Task | Start Date | Completion Date | Reference Material |
 | --- | --- | --- | --- | --- |
-| 2 | - Design 3-Tier Web Architecture diagram (ALB + EC2 ASG in Private Subnets + RDS Multi-AZ + S3) | 07/27/2026 | 07/27/2026 | <https://aws.amazon.com/architecture/well-architected/> |
-| 3 | - **Practice:** <br>&emsp; + Provision end-to-end 3-Tier infrastructure automatically using CloudFormation/Terraform IaC scripts <br>&emsp; + Deploy sample web app connecting Web Tier to DB Tier | 07/28/2026 | 07/28/2026 | <https://github.com/aws-samples/aws-refarch-wordpress> |
-| 4 | - **Practice:** <br>&emsp; + Perform security audit (Security Groups, IAM roles, public bucket blocks) <br>&emsp; + Conduct load testing and verify multi-AZ failover resilience | 07/29/2026 | 07/29/2026 | <https://docs.aws.amazon.com/security/> |
-| 5 | - Compile complete internship report documentation, architectural diagrams, and weekly worklogs | 07/30/2026 | 07/30/2026 |  |
-| 6 | - Present final capstone project to FCAJ mentors, finalize self-evaluation, and complete the 7-week internship program | 07/31/2026 | 07/31/2026 |  |
+| 2 | - Write AWS SAM Template (`template.yaml`) defining Serverless infrastructure (Lambda, API Gateway, SQS, DynamoDB, S3, IAM Roles) | 07/27/2026 | 07/27/2026 | <https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/what-is-sam.html> |
+| 3 | - **Practice:** <br>&emsp; + Automate stack deployment for CodExecute project using AWS SAM CLI <br>&emsp; + Verify resource state and permission boundaries post-deployment | 07/28/2026 | 07/28/2026 | <https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-cli-command-reference-sam-deploy.html> |
+| 4 | - **Practice:** <br>&emsp; + Conduct load testing using Locust/k6 (sustaining up to 1,000 concurrent users) <br>&emsp; + Configure CloudWatch Alarms & SNS Notifications for real-time alerting | 07/29/2026 | 07/29/2026 | <https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html> |
+| 5 | - Summarize performance benchmarks, monthly operational cost breakdown (~$23.23/month), and finalize 7-week internship report | 07/30/2026 | 07/30/2026 |  |
+| 6 | - Present CodExecute Capstone Project to FCAJ mentors, defend architecture design, and graduate from internship program | 07/31/2026 | 07/31/2026 |  |
 
 
 ### Week 7 Achievements:
 
-* Successfully designed and deployed a production-grade, highly available, and secure 3-Tier Web Architecture on AWS.
-* Verified automated failover, load balancing, and infrastructure repeatability via IaC scripts.
-* Successfully completed all 7 weeks of the FCAJ internship program, finalized technical report documentation, and received capstone evaluation.
+* Automated 100% of CodExecute project infrastructure using IaC scripts (AWS SAM).
+* System successfully passed load testing, serving 1,000 concurrent users without bottlenecks.
+* Successfully completed all 7 weeks of the FCAJ internship program, finalized report documentation, and received capstone evaluation.

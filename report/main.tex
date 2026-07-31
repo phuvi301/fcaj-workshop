@@ -43,7 +43,7 @@
 \hypersetup{urlcolor=blue,linkcolor=black,citecolor=black,colorlinks=true}
 \usepackage{listings}
 
-\IfFileExists{grffile.sty}{\usepackage{grffile}}{}
+\providecommand{\pandocbounded}[1]{#1}
 
 \graphicspath{{../static/images/}}
 
@@ -101,7 +101,7 @@ captionpos=b,
 		\tiny \bf
 	\end{tabular}}
 \fancyfoot{}
-\fancyfoot[L]{\scriptsize  Báo cáo Thực tập Ngoài trường (CO3335)}
+\fancyfoot[L]{\scriptsize  Báo cáo môn học Thực tập Ngoài trường (CO3335)}
 \fancyfoot[R]{\scriptsize  Trang {\thepage}/\pageref{LastPage}}
 \renewcommand{\headrulewidth}{0.3pt}
 \renewcommand{\footrulewidth}{0.3pt}
@@ -158,30 +158,30 @@ captionpos=b,
 
 \begin{center}
 \begin{tabular}{c}
-\multicolumn{1}{c}{\textbf{{\LARGE BÁO CÁO}}}\\
-\\{\textbf{{\LARGE THỰC TẬP NGOÀI TRƯỜNG}}}
+\multicolumn{1}{c}{\textbf{{\LARGE BÁO CÁO MÔN HỌC}}}\\
+\\{\textbf{{\LARGE THỰC TẬP NGOÀI TRƯỜNG (CO3335)}}}
 \\
 \\
-\textbf{\Large HỌC KỲ ...... NĂM HỌC .......................} \\
+\textbf{\Large HỌC KỲ 253 NĂM HỌC 2025-2026} \\
 \end{tabular}
 \end{center}
 \vspace{0.5cm}
 \begin{itemize}
 \renewcommand\labelitemi{--}
-    \item \Large \textbf{NGÀNH: ..................................................}
-    \item \Large \textbf{CHƯƠNG TRÌNH ĐÀO TẠO: .............................................}
+    \item \Large \textbf{NGÀNH: Khoa học Máy tính}
+    \item \Large \textbf{CHƯƠNG TRÌNH ĐÀO TẠO: Chính quy}
 \end{itemize}
 \vspace{0.7cm}
 \begin{itemize}
 \renewcommand\labelitemi{--}
-    \item \Large \textbf{ĐƠN VỊ/ DOANH NGHIỆP NHẬN THỰC TẬP:}
-    \\ \Large \textbf{...............................................................................}
-    \item \Large \textbf{CÁN BỘ HƯỚNG DẪN CHUYÊN MÔN TRỰC TIẾP CỦA ĐƠN VỊ/ DOANH NGHIỆP:}
-    \\ \Large \textbf{...............................................................................}
-    \item \Large \textbf{CÁN BỘ HƯỚNG DẪN/ GIÁM SÁT/ CHẤM ĐIỂM BÁO CÁO CỦA KHOA (CBHD/CBGS/CĐBC):}
-    \\ \Large \textbf{...............................................................................}
+    \item \Large \textbf{ĐƠN VỊ/DOANH NGHIỆP NHẬN THỰC TẬP:}
+    \\ \Large \textbf{CÔNG TY TNHH AMAZON WEB SERVICES VIỆT NAM}
+    \item \Large \textbf{CÁN BỘ HƯỚNG DẪN CHUYÊN MÔN TRỰC TIẾP CỦA ĐƠN VỊ/DOANH NGHIỆP:}
+    \\ \Large \textbf{LỮ HOÀN THIỆN}
+    \item \Large \textbf{CÁN BỘ HƯỚNG DẪN/GIÁM SÁT/CHẤM ĐIỂM BÁO CÁO CỦA KHOA (CBHD/CBGS/CĐBC):}
+    \\ \Large \textbf{VŨ NGỌC TÚ}
     \item \Large \textbf{SINH VIÊN THỰC HIỆN (SVTH):}
-    \\ \Large \textbf{HỌ VÀ TÊN: ..............................} \textbf{MSSV:..................}
+    \\ \Large \textbf{HỌ VÀ TÊN: NGUYỄN PHÚ VINH} \textbf{MSSV: 2313922}
 \end{itemize}
 \vspace{0.5cm}
 \begin{center}
@@ -199,10 +199,41 @@ captionpos=b,
 
 \newpage
 \section{Tổng kết}
+
+\subsection{Kiến thức và Kỹ năng thu nhận được}
+
+Sau quá trình tham gia chương trình thực tập \textbf{First Cloud AI Journey (FCAJ)} và trực tiếp phát triển dự án \textbf{CodExecute}, sinh viên đã tích lũy và thu nhận được các kiến thức chuyên môn cùng kỹ năng thực chiến quan trọng sau:
+
 \begin{itemize}
-    \item Kết thúc kỳ thực tập, SV thu nhận được những kỹ năng/ kiến thức gì?
-    \item Cảm nhận cá nhân: về DN, về chương trình thực tập?
-    \item SV ký và ghi rõ họ tên (chữ ký sống/ trực tiếp bằng bút màu xanh).
+    \item \textbf{Kiến thức Chuyên môn về Cloud \& AI:}
+    \begin{itemize}
+        \item Nắm vững nguyên lý và vận hành hạ tầng Cloud-Native trên nền tảng AWS với các dịch vụ cốt lõi: AWS Lambda, API Gateway, Amazon S3, Amazon DynamoDB, Amazon SQS, CloudFront, AWS WAF, AWS ECR, IAM, CloudWatch và SNS.
+        \item Tư duy thiết kế hệ thống theo mô hình Pure Serverless, Event-Driven Architecture và tuân thủ 5 trụ cột của \textit{AWS Well-Architected Framework} (Operational Excellence, Security, Reliability, Performance Efficiency, Cost Optimization).
+        \item Tiếp cận tư duy bảo mật ứng dụng Cloud nâng cao: thiết lập môi trường Sandbox cách ly chống Remote Code Execution (RCE), phân quyền tối thiểu với IAM Roles, bảo vệ bề mặt ứng dụng với AWS WAF và mã hóa dữ liệu (KMS/TLS 1.3).
+    \end{itemize}
+
+    \item \textbf{Kỹ năng Kỹ thuật \& Thực chiến (Hard Skills):}
+    \begin{itemize}
+        \item \textit{Infrastructure as Code (IaC):} Thành thạo viết kịch bản tự động hóa hạ tầng bằng AWS SAM và Terraform để khởi tạo môi trường thử nghiệm và sản xuất một cách nhanh chóng.
+        \item \textit{Phát triển Full-stack Serverless:} Phát triển ứng dụng Web mượt mà với React + Vite Frontend kết nối tới các dịch vụ RESTful API viết bằng FastAPI (Python) triển khai trên AWS Lambda.
+    \end{itemize}
+
+    \item \textbf{Kỹ năng Mềm (Soft Skills):}
+    \begin{itemize}
+        \item Kỹ năng giao tiếp, làm việc nhóm và phối hợp xử lý công việc hiệu quả trong môi trường làm việc doanh nghiệp chuyên nghiệp tại AWS Việt Nam.
+        \item Kỹ năng viết báo cáo kỹ thuật chuẩn hóa, trình bày giải pháp kiến trúc và quản lý tiến độ dự án theo phương pháp Agile/Scrum.
+    \end{itemize}
 \end{itemize}
+
+\subsection{Cảm nhận cá nhân}
+
+\begin{itemize}
+    \item \textbf{Về Doanh nghiệp \& Môi trường làm việc:}
+    Môi trường làm việc tại Công ty TNHH Amazon Web Services Việt Nam cực kỳ năng động, thân thiện và chuyên nghiệp. Đội ngũ Mentor hướng dẫn và Ban quản trị chương trình luôn theo sát tiến độ, hỗ trợ tận tình và định hướng tư duy thực chiến cũng như lộ trình phát triển nghề nghiệp rõ ràng cho thực tập sinh.
+
+    \item \textbf{Về Chương trình Thực tập (First Cloud AI Journey - FCAJ):}
+    Chương trình FCAJ được thiết kế rất sát với thực tế và xu hướng phát triển công nghệ điện toán đám mây hiện nay. Chương trình giúp sinh viên thu hẹp khoảng cách giữa lý thuyết ở trường đại học và yêu cầu thực tế của doanh nghiệp. Văn hóa "Pay it forward" cùng tinh thần đồng đội giúp sinh viên tích lũy thêm nhiều kinh nghiệm giá trị và mở rộng mạng lưới kết nối chuyên môn.
+\end{itemize}
+
 \input{TongKet}
 \end{document}

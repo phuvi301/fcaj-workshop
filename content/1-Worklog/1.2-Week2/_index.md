@@ -19,20 +19,20 @@ reportType: worklog
 ### Week 2 Objectives:
 
 * Understand AWS IAM core concepts: Users, Groups, Roles, and Policies.
-* Learn AWS security best practices: Least privilege, MFA, and temporary credentials.
+* Design security policies for CodExecute: Least privilege execution roles for Lambda & S3 Bucket Policies.
 
 ### Tasks to be carried out this week:
 | Day | Task | Start Date | Completion Date | Reference Material |
 | --- | --- | --- | --- | --- |
-| 2 | - Learn IAM fundamentals: IAM Users, Groups, and Managed Policies vs Inline Policies | 06/22/2026 | 06/22/2026 | <https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users.html> |
-| 3 | - Learn IAM Roles & Trust Relationships (EC2 Service Roles, Cross-account access) | 06/23/2026 | 06/23/2026 | <https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html> |
-| 4 | - **Practice:** <br>&emsp; + Create IAM Users and Groups <br>&emsp; + Attach Custom JSON Policies <br>&emsp; + Enforce MFA policy for admin users | 06/24/2026 | 06/24/2026 | <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html> |
-| 5 | - **Practice:** <br>&emsp; + Create IAM Role for EC2 with S3 ReadAccess <br>&emsp; + Attach role to EC2 instance <br>&emsp; + Verify S3 access without hardcoded keys | 06/25/2026 | 06/25/2026 | <https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2.html> |
-| 6 | - Learn about AWS Security Token Service (STS) and IAM Access Analyzer | 06/26/2026 | 06/26/2026 | <https://docs.aws.amazon.com/STS/latest/APIReference/Welcome.html> <br> <https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html> |
+| 2 | - Learn IAM fundamentals: IAM Users, Groups, Managed Policies vs Inline Policies | 06/22/2026 | 06/22/2026 | <https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users.html> |
+| 3 | - Design least-privilege architecture for Lambda API Handler, Lambda Executor Sandbox, S3, and DynamoDB | 06/23/2026 | 06/23/2026 | <https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html> |
+| 4 | - **Practice:** <br>&emsp; + Create S3 Buckets (`codexecute-static-web`, `codexecute-testcases`, `codexecute-user-avatars`) <br>&emsp; + Configure S3 Block Public Access & CORS | 06/24/2026 | 06/24/2026 | <https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html> |
+| 5 | - **Practice:** <br>&emsp; + Create IAM Execution Roles for Lambda API Handler and Lambda Sandbox Executor <br>&emsp; + Grant S3 Testcase ReadAccess & DynamoDB Result WriteAccess without long-term keys | 06/25/2026 | 06/25/2026 | <https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2.html> |
+| 6 | - Learn AWS Security Token Service (STS) & test IAM Role permissions via AWS CLI | 06/26/2026 | 06/26/2026 | <https://docs.aws.amazon.com/STS/latest/APIReference/Welcome.html> |
 
 
 ### Week 2 Achievements:
 
-* Understood the structure of IAM Policies (Effect, Action, Resource, Condition).
-* Successfully created and configured IAM Roles for EC2 instances to securely access S3 buckets without storing long-term credentials.
-* Applied least-privilege principles and configured Multi-Factor Authentication (MFA) enforcement.
+* Mastered IAM Policy JSON structure (Effect, Action, Resource, Condition).
+* Successfully created S3 Buckets for hosting static web assets, problem testcase files, and user avatars.
+* Configured IAM Execution Roles following least-privilege principles for Serverless Lambda functions.

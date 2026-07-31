@@ -13,21 +13,21 @@ reportType: worklog
 
 ### Mục tiêu tuần 3:
 
-* Hiểu mạng ảo Amazon VPC (Virtual Private Cloud) và các thành phần hạ tầng mạng cốt lõi.
-* Nắm vững kỹ thuật phân chia CIDR, Public/Private Subnet, Internet Gateway, NAT Gateway, Route Table và bảo mật với Security Group & Bastion Host.
+* Hiểu hạ tầng mạng Amazon VPC (Virtual Private Cloud) và dịch vụ Amazon CloudFront CDN.
+* Nắm vững kỹ thuật phân chia Subnet Multi-AZ, đính kèm WAF bảo vệ bề mặt ứng dụng và phân phối Frontend qua CloudFront CDN.
 
 ### Các công việc cần triển khai trong tuần này:
 | Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
 | --- | --- | --- | --- | --- |
-| 2 | - Tìm hiểu cơ bản về VPC: IPv4 CIDR Block (`10.0.0.0/16`), quy hoạch chia Subnet (Public/Private Subnet đa vùng AZ) | 29/06/2026 | 29/06/2026 | <https://docs.aws.amazon.com/vpc/latest/userguide/configure-your-vpc.html> |
-| 3 | - Tìm hiểu Internet Gateway (IGW) và Route Table (Định tuyến Local & Default `0.0.0.0/0`) | 30/06/2026 | 30/06/2026 | <https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html> |
-| 4 | - **Thực hành:** <br>&emsp; + Khởi tạo Custom VPC <br>&emsp; + Phân chia 2 Public Subnet & 2 Private Subnet <br>&emsp; + Đính kèm Internet Gateway và cấu hình Public Route Table | 01/07/2026 | 01/07/2026 | <https://docs.aws.amazon.com/vpc/latest/userguide/vpc-subnets-routing.html> |
-| 5 | - **Thực hành:** <br>&emsp; + Tạo NAT Gateway ở Public Subnet <br>&emsp; + Cấu hình Private Route Table trỏ traffic chiều ra qua NAT Gateway | 02/07/2026 | 02/07/2026 | <https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html> |
-| 6 | - **Thực hành:** <br>&emsp; + Tạo Bastion Host ở Public Subnet <br>&emsp; + Thiết lập Security Groups và kết nối SSH an toàn tới máy chủ EC2 ở Private Subnet | 03/07/2026 | 03/07/2026 | <https://docs.aws.amazon.com/vpc/latest/userguide/vpc-security-groups.html> |
+| 2 | - Tìm hiểu cơ bản về VPC: IPv4 CIDR Block (`10.0.0.0/16`), quy hoạch Subnets (2 Public Subnets & 2 Private Subnets đa vùng AZ) | 29/06/2026 | 29/06/2026 | <https://docs.aws.amazon.com/vpc/latest/userguide/configure-your-vpc.html> |
+| 3 | - Tìm hiểu Amazon CloudFront CDN: Edge Locations, Cache Behaviors, Custom Domain & HTTPS SSL/TLS Certificate | 30/06/2026 | 30/06/2026 | <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Welcome.html> |
+| 4 | - **Thực hành:** <br>&emsp; + Khởi tạo Custom VPC, đính kèm Internet Gateway và cấu hình Route Tables <br>&emsp; + Thiết lập Security Groups cho môi trường nội bộ | 01/07/2026 | 01/07/2026 | <https://docs.aws.amazon.com/vpc/latest/userguide/vpc-subnets-routing.html> |
+| 5 | - **Thực hành:** <br>&emsp; + Tạo CloudFront Distribution trỏ tới S3 Static Web Bucket để phân phối React Frontend của CodExecute | 02/07/2026 | 02/07/2026 | <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/DistributionConfig.html> |
+| 6 | - **Thực hành:** <br>&emsp; + Tạo CloudFront Cache Behavior định tuyến `/api/*` tới API Gateway <br>&emsp; + Bật AWS WAF Web ACL với Rate Limiting rule chống DDoS/Spam API | 03/07/2026 | 03/07/2026 | <https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html> |
 
 
 ### Kết quả đạt được tuần 3:
 
-* Thiết kế và xây dựng thành công hạ tầng Custom VPC đa vùng sẵn sàng (Multi-AZ) cô lập môi trường Public và Private.
-* Cấu hình thành công Internet Gateway và NAT Gateway điều phối lưu lượng mạng chiều vào và chiều ra an toàn.
-* Triển khai mô hình Bastion Host kết hợp Security Groups để quản trị các máy chủ nội bộ.
+* Thiết kế và xây dựng thành công hạ tầng Custom VPC cô lập môi trường mạng Public và Private.
+* Phân phối ứng dụng React Frontend thành công qua CloudFront CDN với tốc độ tải trang cao ở Edge Locations.
+* Định tuyến API thành công qua CloudFront và kích hoạt tường lửa AWS WAF bảo vệ ứng dụng trước các đợt tấn công Layer 7.

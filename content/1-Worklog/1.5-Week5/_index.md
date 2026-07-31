@@ -18,21 +18,21 @@ reportType: worklog
 
 ### Week 5 Objectives:
 
-* Understand Relational Databases (Amazon RDS), NoSQL Databases (Amazon DynamoDB), and Load Balancing (ALB).
-* Practice provisioning high-availability RDS MySQL instances, DynamoDB tables, and Application Load Balancer target routing.
+* Understand Serverless Web Application architecture (AWS Lambda, API Gateway) and container packaging with Docker & ECR.
+* Develop Backend RESTful APIs (FastAPI) for CodExecute, integrating JWT authentication and DynamoDB persistence.
 
 ### Tasks to be carried out this week:
 | Day | Task | Start Date | Completion Date | Reference Material |
 | --- | --- | --- | --- | --- |
-| 2 | - Learn Amazon RDS architecture (Multi-AZ failover, DB Subnet Groups) and Amazon DynamoDB (Partition/Sort Keys) | 07/13/2026 | 07/13/2026 | <https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html> |
-| 3 | - Learn Elastic Load Balancing (ELB): Application Load Balancer (ALB), Target Groups, and Listener Rules | 07/14/2026 | 07/14/2026 | <https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html> |
-| 4 | - **Practice:** <br>&emsp; + Create DB Subnet Group & launch RDS MySQL instance in private subnets <br>&emsp; + Connect to RDS MySQL from EC2 application server | 07/15/2026 | 07/15/2026 | <https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html> |
-| 5 | - **Practice:** <br>&emsp; + Test RDS Multi-AZ failover and restore database from manual DB Snapshot <br>&emsp; + Create DynamoDB table and perform CRUD operations via Python SDK (boto3) | 07/16/2026 | 07/16/2026 | <https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html> |
-| 6 | - **Practice:** <br>&emsp; + Provision Application Load Balancer (ALB) in Public Subnets <br>&emsp; + Register EC2 web instances into Target Group and test traffic distribution | 07/17/2026 | 07/17/2026 | <https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html> |
+| 2 | - Learn Serverless Web API architecture: Mangum ASGI Adapter, API Gateway HTTP API Proxy Integration | 07/13/2026 | 07/13/2026 | <https://docs.aws.amazon.com/lambda/latest/dg/welcome.html> |
+| 3 | - Learn JWT Token authentication mechanisms & OAuth Providers (Google/GitHub login) | 07/14/2026 | 07/14/2026 | <https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-integrate-with-cognito.html> |
+| 4 | - **Practice:** <br>&emsp; + Containerize FastAPI backend into Docker image & push to AWS ECR repository <br>&emsp; + Provision AWS Lambda function (API Handler) from ECR image | 07/15/2026 | 07/15/2026 | <https://docs.aws.amazon.com/lambda/latest/dg/images-create.html> |
+| 5 | - **Practice:** <br>&emsp; + Create API Gateway HTTP API linked to Lambda API Handler <br>&emsp; + Configure CORS policies allowing access from React Frontend | 07/16/2026 | 07/16/2026 | <https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api.html> |
+| 6 | - **Practice:** <br>&emsp; + Develop API Endpoints: Auth API, Problemset List, Code Run API, Post/Comment APIs <br>&emsp; + Test endpoints via Postman | 07/17/2026 | 07/17/2026 | <https://fastapi.tiangolo.com/> |
 
 
 ### Week 5 Achievements:
 
-* Deployed a secure, high-availability relational database (RDS MySQL Multi-AZ) inside private subnets.
-* Mastered NoSQL table design and programmatic data CRUD operations using Amazon DynamoDB.
-* Configured an Application Load Balancer (ALB) to distribute web traffic evenly across EC2 instances.
+* Containerized FastAPI backend application on AWS ECR and deployed to AWS Lambda.
+* Created and configured API Gateway HTTP API for seamless Frontend to Backend routing.
+* Completed RESTful API backend handling problem management, developer social posts, and sample code execution.

@@ -13,21 +13,21 @@ reportType: worklog
 
 ### Mục tiêu tuần 7:
 
-* Tổng hợp toàn bộ kiến thức và dịch vụ AWS đã học để thiết kế và triển khai mô hình Mô hình 3 Lớp (3-Tier Architecture) hoàn chỉnh.
-* Rà soát bảo mật toàn hệ thống, thử nghiệm tải, hoàn thiện tài liệu báo cáo và nghiệm thu tổng kết kỳ thực tập.
+* Tự động hóa toàn bộ hạ tầng dự án CodExecute bằng Infrastructure as Code (AWS SAM/Terraform), kiểm thử chịu tải và tối ưu chi phí.
+* Rà soát bảo mật toàn hệ thống, nghiệm thu dự án Capstone và hoàn thiện báo cáo tổng kết kỳ thực tập.
 
 ### Các công việc cần triển khai trong tuần này:
 | Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
 | --- | --- | --- | --- | --- |
-| 2 | - Thiết kế sơ đồ kiến trúc 3-Tier Web Application (ALB + EC2 ASG ở Private Subnet + RDS Multi-AZ + S3) | 27/07/2026 | 27/07/2026 | <https://aws.amazon.com/architecture/well-architected/> |
-| 3 | - **Thực hành:** <br>&emsp; + Dựng toàn bộ hạ tầng 3-Tier tự động bằng script IaC (CloudFormation/Terraform) <br>&emsp; + Deploy ứng dụng mẫu kết nối thành công giữa Web Tier và DB Tier | 28/07/2026 | 28/07/2026 | <https://github.com/aws-samples/aws-refarch-wordpress> |
-| 4 | - **Thực hành:** <br>&emsp; + Rà soát bảo mật toàn hệ thống (Security Groups, IAM policy, S3 block public) <br>&emsp; + Thử nghiệm tải và kiểm tra độ bền chịu lỗi đa vùng sẵn sàng | 29/07/2026 | 29/07/2026 | <https://docs.aws.amazon.com/security/> |
-| 5 | - Tổng hợp hình ảnh minh họa, sơ đồ và hoàn thiện toàn bộ báo cáo thực tập 7 tuần | 30/07/2026 | 30/07/2026 |  |
-| 6 | - Báo cáo tổng kết dự án Capstone với các Mentor FCAJ, hoàn thành tự đánh giá và chính thức hoàn thành kỳ thực tập | 31/07/2026 | 31/07/2026 |  |
+| 2 | - Viết kịch bản AWS SAM Template (`template.yaml`) định nghĩa hạ tầng Serverless (Lambda, API Gateway, SQS, DynamoDB, S3, IAM Roles) | 27/07/2026 | 27/07/2026 | <https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/what-is-sam.html> |
+| 3 | - **Thực hành:** <br>&emsp; + Tự động hóa quá trình Deploy toàn bộ stack dự án CodExecute bằng AWS SAM CLI <br>&emsp; + Kiểm tra tính toàn vẹn tài nguyên hạ tầng sau khi triển khai tự động | 28/07/2026 | 28/07/2026 | <https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-cli-command-reference-sam-deploy.html> |
+| 4 | - **Thực hành:** <br>&emsp; + Thực hiện Load Testing bài bản bằng Locust/k6 (đạt khả năng chịu tải 1,000 concurrent users) <br>&emsp; + Cấu hình CloudWatch Alarms & SNS Notifications cảnh báo khi có lỗi phát sinh | 29/07/2026 | 29/07/2026 | <https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html> |
+| 5 | - Tổng hợp kết quả đo kiểm hiệu năng, bảng tính toán chi phí vận hành hàng tháng (~$23.23/tháng) và hoàn thiện báo cáo thực tập 7 tuần | 30/07/2026 | 30/07/2026 |  |
+| 6 | - Báo cáo tổng kết dự án Capstone CodExecute với các Mentor FCAJ, bảo vệ giải pháp kiến trúc và hoàn thành kỳ thực tập | 31/07/2026 | 31/07/2026 |  |
 
 
 ### Kết quả đạt được tuần 7:
 
-* Triển khai thành công hệ thống ứng dụng Web 3 lớp (3-Tier Architecture) chuẩn doanh nghiệp trên hạ tầng AWS.
-* Tự động hóa 100% quá trình tạo và xóa hạ tầng bằng script IaC.
+* Triển khai tự động hóa 100% toàn bộ hạ tầng dự án CodExecute bằng script IaC (AWS SAM).
+* Hệ thống trải qua đợt Load Testing thành công với khả năng phục vụ đồng thời 1,000 concurrent users không nghẽn mạng.
 * Hoàn thành xuất sắc chương trình thực tập 7 tuần FCAJ, hoàn thiện tài liệu báo cáo và bảo vệ thành công dự án Capstone.

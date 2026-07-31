@@ -203,11 +203,14 @@ Estimates are calculated based on an average workload of **100,000 code submissi
 | **Amazon DynamoDB** | 1,000,000 Read/Write Units (On-Demand) + 5GB Storage | $0.25 / 1M WCU, $0.05 / 1M RCU | **$3.20** |
 | **Amazon S3** | 15GB Storage (Testcases + User Media + Web Assets) + 100k GET/PUT | $0.023 / GB | **$0.65** |
 | **Amazon CloudFront** | 50GB Data Transfer Out + 500k HTTPS Requests | $0.09 / GB | **$4.50** |
+| **AWS WAF** | 1 Web ACL + 2 Rules (Rate Limiting & Core Rule Set) + 500k Requests | $5.00/Web ACL + $1.00/Rule + $0.60/1M Requests | **$7.30** |
+| **AWS ECR** | 5GB Storage for Container Images (Lambda Sandbox & API Handler) | $0.10 / GB Storage / month | **$0.50** |
+| **Amazon SNS** | ~100 Email notifications triggered from CloudWatch Alarms | First 1,000 Emails & 1M Publish requests free | **$0.00** |
 | **Amazon CloudWatch** | 3GB Ingestion Logs + 5 Custom Metrics + 3 Alarms | $0.57 / GB Logs | **$2.70** |
 | **AWS IAM** | All IAM Users, Roles, and Policies | Free | **$0.00** |
-| **TOTAL ESTIMATED MONTHLY COST:** | | | **~$15.43 USD / month** |
+| **TOTAL ESTIMATED MONTHLY COST:** | | | **~$23.23 USD / month** |
 
-> 💡 *Note:* Under the **AWS Free Tier** during the first 12 months, actual out-of-pocket costs will remain **< $3.00 USD/month**.
+> 💡 *Note:* Under the **AWS Free Tier** during the first 12 months (1M Lambda requests/mo, 1M API Gateway requests/mo, 25GB DynamoDB storage, 5GB S3 storage, 1,000 SNS Emails/mo), actual out-of-pocket costs will remain **< $8.50 USD/month** (primarily AWS WAF Base ACL).
 
 ---
 
@@ -226,7 +229,11 @@ Estimates are calculated based on an average workload of **100,000 code submissi
 4. **SQS Long Polling:**
    - Configures SQS `ReceiveMessageWaitTimeSeconds = 20` (Long Polling) to cut empty receive request charges by up to 90%.
 
-5. **AWS Lambda Power Tuning:**
+5. **ECR Storage & WAF Rule Optimization:**
+   - Enforces an **ECR Lifecycle Policy** auto-deleting untagged container images and maintaining only the 3 latest images to keep ECR storage below 5GB.
+   - Combines **AWS WAF** with CloudFront Caching and Rate Limiting to block malicious traffic at Edge locations, safeguarding the Lambda backend from costly spikes.
+
+6. **AWS Lambda Power Tuning:**
    - Leverages *AWS Lambda Power Tuning* to select optimal memory/vCPU ratios for Lambda API & Worker functions, minimizing execution time and billing duration.
 
 ---

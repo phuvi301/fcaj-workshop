@@ -440,8 +440,8 @@ def render_worklog_table_latex(header, rows, keep_columns):
     latex.append(r"\small")
     latex.append(r"\setlength{\tabcolsep}{5pt}")
     latex.append(r"\renewcommand{\arraystretch}{1.2}")
-    latex.append(r"\begin{longtable}{@{}p{0.07\linewidth}p{0.72\linewidth}p{0.17\linewidth}@{}}")
-    latex.append(r"\toprule")
+    latex.append(r"\begin{longtable}{|p{0.07\linewidth}|p{0.72\linewidth}|p{0.17\linewidth}|}")
+    latex.append(r"\hline")
 
     # Force nicer names based on selected columns count.
     display_headers = []
@@ -457,11 +457,8 @@ def render_worklog_table_latex(header, rows, keep_columns):
             display_headers.append(name)
 
     # If user selects exactly Day/Task/Completion, use 3-column layout.
-    latex.append(" & ".join(r"\textbf{" + latex_escape_cell(h) + "}" for h in display_headers) + r" \\")
-    latex.append(r"\midrule")
+    latex.append(" & ".join(r"\textbf{" + latex_escape_cell(h) + "}" for h in display_headers) + r" \\ \hline")
     latex.append(r"\endhead")
-    latex.append(r"\bottomrule")
-    latex.append(r"\endfoot")
 
     for row in rows:
         selected = [row[idx] if idx < len(row) else "" for idx in keep_idx]
@@ -475,8 +472,7 @@ def render_worklog_table_latex(header, rows, keep_columns):
             else:
                 rendered.append(simple_cell_to_latex(cell))
 
-        latex.append(" & ".join(rendered) + r" \\")
-        latex.append(r"\addlinespace[0.35em]")
+        latex.append(" & ".join(rendered) + r" \\ \hline")
 
     latex.append(r"\end{longtable}")
     latex.append(r"\endgroup")
@@ -684,10 +680,94 @@ def compact_longtables(latex):
     return latex
 
 
+def format_tables_with_grid(latex):
+    """Add grid lines (horizontal \\hline and vertical | column borders) to longtable environments."""
+    if r"\begin{longtable}" not in latex:
+        return latex
+
+    def transform_table(match):
+        table_text = match.group(0)
+
+        # 1. Replace booktabs rules (\toprule, \midrule, \bottomrule) with \hline
+        table_text = re.sub(r"\\toprule(\s*\\noalign\{\})?", r"\\hline", table_text)
+        table_text = re.sub(r"\\midrule(\s*\\noalign\{\})?", r"\\hline", table_text)
+        table_text = re.sub(r"\\bottomrule(\s*\\noalign\{\})?", r"\\hline", table_text)
+
+        # 2. Modify column specifier in \begin{longtable}[...]{spec} or \begin{longtable}{spec}
+        def fix_spec(m):
+            head = m.group(1)  # \begin{longtable} or \begin{longtable}[...]
+            spec = m.group(2)  # inner column specification string
+
+            # Remove @{} and @{\noalign{...}} and existing |
+            spec_clean = re.sub(r"@\{[^}]*\}", "", spec)
+            spec_clean = spec_clean.replace("|", " ")
+
+            lines = [line.strip() for line in spec_clean.splitlines() if line.strip()]
+            cols = []
+            for l in lines:
+                # Split multiple column specs on the same line if present
+                sub_cols = re.split(r"\s+(?=>|p\{|m\{|b\{|(?<!\\)\b[clr]\b)", l)
+                for sc in sub_cols:
+                    if sc.strip():
+                        cols.append(sc.strip())
+
+            if not cols:
+                return m.group(0)
+
+            fixed_cols = ["|" + c for c in cols]
+            new_spec = " ".join(fixed_cols) + "|"
+            new_spec = re.sub(r"\|+", "|", new_spec)
+
+            return f"{head}{{{new_spec}}}"
+
+        table_text = re.sub(
+            r"(\\begin\{longtable\}(?:\[[^\]]*\])?)\{(.*?)\}\s*(?=\\toprule|\\hline|\\midrule|\\endhead)",
+            fix_spec,
+            table_text,
+            count=1,
+            flags=re.DOTALL
+        )
+
+        # 3. Add \hline after each body row
+        if r"\endhead" in table_text:
+            parts = table_text.split(r"\endhead", 1)
+            head_part = parts[0] + r"\endhead"
+            body_part = parts[1]
+
+            foot_str = ""
+            if r"\endlastfoot" in body_part:
+                foot_split = body_part.split(r"\endlastfoot", 1)
+                foot_str = foot_split[0] + r"\endlastfoot"
+                body_part = foot_split[1]
+            elif r"\endfoot" in body_part:
+                foot_split = body_part.split(r"\endfoot", 1)
+                foot_str = foot_split[0] + r"\endfoot"
+                body_part = foot_split[1]
+
+            body_lines = body_part.splitlines(True)
+            new_body = []
+            for line in body_lines:
+                stripped = line.rstrip()
+                if r"\end{longtable}" in line:
+                    new_body.append(line)
+                elif stripped.endswith(r"\\"):
+                    new_body.append(stripped + r" \hline" + ("\n" if line.endswith("\n") else ""))
+                elif stripped.endswith(r"\\ \hline"):
+                    new_body.append(line)
+                else:
+                    new_body.append(line)
+
+            table_text = head_part + foot_str + "".join(new_body)
+
+        return table_text
+
+    return re.sub(r"\\begin\{longtable\}.*?\\end\{longtable\}", transform_table, latex, flags=re.DOTALL)
+
+
 def postprocess_latex(latex):
-    # Do NOT replace Pandoc table column specs by regex.
     latex = re.sub(r"\\label\{[^}]+\}", "", latex)
     latex = neutralize_body_headings(latex)
+    latex = format_tables_with_grid(latex)
     latex = compact_longtables(latex)
     return latex
 
@@ -828,12 +908,15 @@ def build_include_file(lang, pages, containers):
     lines.append(r"\providecommand{\tightlist}{%")
     lines.append(r"  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}%")
     lines.append(r"}")
+    lines.append(r"\providecommand{\pandocbounded}[1]{#1}")
     lines.append("")
 
     lines.append(f"\\section{{{sanitize_latex_text(top_body)}}}")
     lines.append("")
 
     for sec_dir in sorted(sections, key=lambda s: sort_key(s)):
+        if sec_dir == "7-Feedback":
+            continue
         sec_pages = sections[sec_dir]
         sec_title = titles.get(sec_dir, sec_dir.replace("-", " "))
 

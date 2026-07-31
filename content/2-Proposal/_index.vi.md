@@ -206,11 +206,14 @@ Dự toán ngân sách được tính dựa trên quy mô vận hành trung bìn
 | **Amazon DynamoDB** | 1,000,000 Read/Write Units (On-Demand Mode) + 5GB Data Storage | $0.25 / 1M WCU, $0.05 / 1M RCU | **$3.20** |
 | **Amazon S3** | 15GB Storage (Testcases + User Media + Web Assets) + 100k GET/PUT | $0.023 / GB | **$0.65** |
 | **Amazon CloudFront** | 50GB Data Transfer Out + 500k HTTPS Requests | $0.09 / GB | **$4.50** |
+| **AWS WAF** | 1 Web ACL + 2 Rules (Rate Limit & Core Rule Set) + 500k Requests | $5.00/Web ACL + $1.00/Rule + $0.60/1M Requests | **$7.30** |
+| **AWS ECR** | 5GB Storage chứa Container Images cho Lambda Sandbox & API Handler | $0.10 / GB Storage / tháng | **$0.50** |
+| **Amazon SNS** | ~100 Email notifications gửi từ CloudWatch Alarms khi có sự cố | 1,000 Email đầu tiên & 1M Publish requests miễn phí | **$0.00** |
 | **Amazon CloudWatch** | 3GB Ingestion Logs + 5 Custom Metrics + 3 Alarms | $0.57 / GB Logs | **$2.70** |
 | **AWS IAM** | Toàn bộ IAM Users, Roles, Policies | Miễn phí | **$0.00** |
-| **TỔNG CỘNG CHI PHÍ DỰ KIẾN / THÁNG:** | | | **~$15.43 USD / tháng** |
+| **TỔNG CỘNG CHI PHÍ DỰ KIẾN / THÁNG:** | | | **~$23.23 USD / tháng** |
 
-> 💡 *Lưu ý:* Trong 12 tháng đầu tiên triển khai, phần lớn chi phí trên sẽ nằm trong gói **AWS Free Tier** (1M Lambda requests/tháng, 1M API Gateway requests/tháng, 25GB DynamoDB storage, 5GB S3 storage), giúp chi phí thực tế duy trì ở mức **< $3.00 USD/tháng**.
+> 💡 *Lưu ý:* Trong 12 tháng đầu tiên triển khai, phần lớn chi phí trên sẽ nằm trong gói **AWS Free Tier** (1M Lambda requests/tháng, 1M API Gateway requests/tháng, 25GB DynamoDB storage, 5GB S3 storage, 1,000 SNS Emails/tháng), giúp chi phí thực tế duy trì ở mức **< $8.50 USD/tháng** (chủ yếu từ AWS WAF Base ACL).
 
 ---
 
@@ -229,7 +232,11 @@ Dự toán ngân sách được tính dựa trên quy mô vận hành trung bìn
 4. **Sử Dụng SQS Long Polling:**
    - Cấu hình SQS `ReceiveMessageWaitTimeSeconds = 20` (Long Polling). Điều này giúp giảm số lượng yêu cầu kiểm tra tin nhắn rỗng (Empty Receive Requests), tiết kiệm chi phí gọi SQS API lên tới 90%.
 
-5. **AWS Lambda Power Tuning:**
+5. **Tối Ưu Dung Lượng ECR & WAF Rules:**
+   - Cấu hình **ECR Lifecycle Policy** tự động xóa các container image untagged cũ và chỉ duy trì tối đa 3 image mới nhất, giữ dung lượng ECR dưới 5GB.
+   - Kết hợp **AWS WAF** với CloudFront Caching và Rate Limiting để chặn traffic độc hại ngay tại Edge Location, bảo vệ backend Lambda khỏi các đợt tấn công tốn kém.
+
+6. **AWS Lambda Power Tuning:**
    - Sử dụng công cụ *AWS Lambda Power Tuning* để tìm mức RAM/vCPU tối ưu nhất cho Lambda API & Worker, giúp vừa tăng tốc độ phản hồi vừa giảm thời gian tính phí.
 
 ---

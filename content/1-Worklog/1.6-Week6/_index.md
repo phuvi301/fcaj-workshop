@@ -18,21 +18,21 @@ reportType: worklog
 
 ### Week 6 Objectives:
 
-* Learn EC2 Auto Scaling Groups (ASG), Serverless computing (AWS Lambda & API Gateway), and Infrastructure as Code (IaC).
-* Practice automated scaling policies, serverless API integration, and CloudFormation template deployment.
+* Understand Amazon SQS asynchronous message queuing and isolated Sandbox execution design on AWS Lambda.
+* Deploy secure, asynchronous automated code evaluation pipeline protected against Remote Code Execution (RCE) with Dead-Letter Queue (DLQ) error handling.
 
 ### Tasks to be carried out this week:
 | Day | Task | Start Date | Completion Date | Reference Material |
 | --- | --- | --- | --- | --- |
-| 2 | - Learn EC2 Auto Scaling Groups (ASG): Launch Templates, Dynamic Scaling Policies, and Health Checks | 07/20/2026 | 07/20/2026 | <https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html> |
-| 3 | - Learn Serverless Architecture: AWS Lambda execution model, API Gateway REST APIs, and CloudFormation/Terraform IaC basics | 07/21/2026 | 07/21/2026 | <https://docs.aws.amazon.com/lambda/latest/dg/welcome.html> |
-| 4 | - **Practice:** <br>&emsp; + Create Launch Template with Apache web server User Data <br>&emsp; + Provision ASG spanning 2 AZs connected to ALB Target Group | 07/22/2026 | 07/22/2026 | <https://docs.aws.amazon.com/autoscaling/ec2/userguide/attach-load-balancer-asg.html> |
-| 5 | - **Practice:** <br>&emsp; + Write Python Lambda handler to query DynamoDB data <br>&emsp; + Expose HTTP endpoints via API Gateway REST API Proxy Integration | 07/23/2026 | 07/23/2026 | <https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-lambda-proxy-integrations.html> |
-| 6 | - **Practice:** <br>&emsp; + Write CloudFormation YAML template to automate VPC & EC2 deployment <br>&emsp; + Deploy stack via AWS CLI and test resource creation | 07/24/2026 | 07/24/2026 | <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html> |
+| 2 | - Learn Amazon SQS: Standard Queue, Message Retention, Long Polling (`WaitTime=20s`), Visibility Timeout, and Dead-Letter Queue (DLQ) | 07/20/2026 | 07/20/2026 | <https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html> |
+| 3 | - Learn resource limits & Sandbox isolation techniques (Memory, CPU, Timeout, Process PIDs) preventing RCE in Lambda Workers | 07/21/2026 | 07/21/2026 | <https://docs.aws.amazon.com/lambda/latest/dg/configuration-function-common.html> |
+| 4 | - **Practice:** <br>&emsp; + Provision SQS Queue `codexecute-submission-queue` with DLQ `codexecute-submission-dlq` <br>&emsp; + Configure Lambda API Handler to push code submission messages to SQS | 07/22/2026 | 07/22/2026 | <https://docs.aws.amazon.com/lambda/latest/dg/with-sqs.html> |
+| 5 | - **Practice:** <br>&emsp; + Build Lambda Code Executor Sandbox (Python/Docker on ECR) triggered automatically by SQS <br>&emsp; + Worker fetches testcases from S3, executes code (C++, Java, Python, JS), and updates evaluation results to DynamoDB | 07/23/2026 | 07/23/2026 | <https://docs.aws.amazon.com/lambda/latest/dg/services-sqs.html> |
+| 6 | - **Practice:** <br>&emsp; + Test malicious payload execution, infinite loops (TLE), and high memory overflow (MLE) <br>&emsp; + Verify complete Sandbox security isolation | 07/24/2026 | 07/24/2026 | <https://docs.aws.amazon.com/lambda/latest/dg/security-isolation.html> |
 
 
 ### Week 6 Achievements:
 
-* Built a self-healing, auto-scaling compute cluster with EC2 Auto Scaling Groups.
-* Developed a fully serverless REST API using API Gateway, AWS Lambda, and DynamoDB.
-* Automated AWS resource provisioning using declarative CloudFormation YAML infrastructure templates.
+* Built SQS message queue buffering submission traffic spikes and preventing platform overload.
+* Deployed isolated Lambda Code Executor Sandbox supporting automated multi-language evaluation (C++, Java, Python, JavaScript).
+* Effectively handled malicious scripts and runtime timeouts (TLE/MLE) without impacting shared infrastructure.

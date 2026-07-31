@@ -42,7 +42,7 @@
 \hypersetup{urlcolor=blue,linkcolor=black,citecolor=black,colorlinks=true}
 \usepackage{listings}
 
-\IfFileExists{grffile.sty}{\usepackage{grffile}}{}
+\providecommand{\pandocbounded}[1]{#1}
 
 \graphicspath{{../static/images/}}
 
@@ -190,10 +190,48 @@ captionpos=b,
 
 \newpage
 \section{Summary}
+
+\subsection{Acquired Knowledge and Skills}
+
+Through participating in the \textbf{First Cloud AI Journey (FCAJ)} internship program and directly engineering the \textbf{CodExecute} project, I have acquired comprehensive technical knowledge and practical skills:
+
 \begin{itemize}
-    \item After the internship, what skills/knowledge did you gain?
-    \item Personal reflections: about the company, about the internship program?
-    \item Student's signature and full name (live signature / direct signature in blue ink).
+    \item \textbf{Cloud \& AI Domain Expertise:}
+    \begin{itemize}
+        \item Mastered Cloud-Native architecture principles and operations on AWS core services: AWS Lambda, API Gateway, Amazon S3, Amazon DynamoDB, Amazon SQS, CloudFront, AWS WAF, AWS ECR, IAM, CloudWatch, and SNS.
+        \item Cultivated architectural design mindsets based on Pure Serverless Event-Driven paradigms adhering to the 5 pillars of the \textit{AWS Well-Architected Framework} (Operational Excellence, Security, Reliability, Performance Efficiency, and Cost Optimization).
+        \item Applied advanced Cloud security practices: designing isolated Sandboxes to prevent Remote Code Execution (RCE), implementing Least Privilege IAM Roles, protecting web perimeters with AWS WAF, and data encryption (KMS/TLS 1.3).
+    \end{itemize}
+
+    \item \textbf{Technical \& Hands-on Engineering Skills (Hard Skills):}
+    \begin{itemize}
+        \item \textit{Infrastructure as Code (IaC):} Proficient in writing infrastructure automation scripts using AWS SAM and Terraform for rapid dev/prod environment provisioning.
+        \item \textit{Full-stack Serverless Development:} Built responsive web applications with React + Vite Frontend communicating with FastAPI (Python) RESTful APIs deployed on AWS Lambda.
+        \item \textit{Testing \& Performance Optimization:} Conducted load testing using Locust/k6 (achieving 1,000 concurrent user load), tuned Lambda memory/timeout configurations, optimized DynamoDB On-Demand queries, and managed S3 Lifecycle rules.
+    \end{itemize}
+
+    \item \textbf{Professional Soft Skills:}
+    \begin{itemize}
+        \item Enhanced communication, teamwork, and cross-functional collaboration skills in a professional enterprise environment at AWS Vietnam.
+        \item Improved technical report writing, architecture solution presentation, and Agile project progress tracking.
+    \end{itemize}
 \end{itemize}
+
+\subsection{Personal Reflections}
+
+\begin{itemize}
+    \item \textbf{About the Company \& Working Environment:}
+    The working environment at Amazon Web Services Vietnam LLC is exceptionally dynamic, welcoming, and professional. Mentors and the program admin team provided dedicated support, closely monitored task progress, and offered valuable guidance for real-world problem solving and career roadmap development.
+
+    \item \textbf{About the Internship Program (First Cloud AI Journey - FCAJ):}
+    The FCAJ program is tailored to current industry demands and Cloud/AI technological trends, successfully bridging academic theory with practical enterprise needs. The "Pay it forward" culture and strong team cohesion motivated continuous learning and professional networking.
+
+    \item \textbf{Suggestions \& Future Outlook:}
+    \begin{itemize}
+        \item \textit{Suggestions for Improvement:} Expand interactive project-sharing sessions and mini-hackathons for interns to foster deeper collaboration.
+        \item \textit{Future Outlook:} I am eager to stay engaged with the FCAJ community in future activities and enthusiastically recommend the program to junior peers.
+    \end{itemize}
+\end{itemize}
+
 \input{TongKet_en}
 \end{document}

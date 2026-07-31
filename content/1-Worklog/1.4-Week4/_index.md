@@ -18,21 +18,21 @@ reportType: worklog
 
 ### Week 4 Objectives:
 
-* Learn AWS Cloud Storage services: Object Storage (Amazon S3), Block Storage (Amazon EBS), and File Storage (Amazon EFS).
-* Practice S3 bucket management, versioning, static website hosting, EBS snapshotting, and EFS shared file mounting.
+* Learn NoSQL Database (Amazon DynamoDB) & testcase dataset management techniques on Amazon S3.
+* Design DynamoDB Single-Table schema, provision GSIs, and configure cost-optimized S3 Lifecycle Rules.
 
 ### Tasks to be carried out this week:
 | Day | Task | Start Date | Completion Date | Reference Material |
 | --- | --- | --- | --- | --- |
-| 2 | - Learn Amazon S3 fundamentals: Storage Classes, Bucket Policies, Versioning, and Static Website Hosting | 07/06/2026 | 07/06/2026 | <https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html> |
-| 3 | - Learn Amazon EBS Volume Types (gp3, io2), Snapshots, and Amazon EFS (Elastic File System) NFS storage | 07/07/2026 | 07/07/2026 | <https://docs.aws.amazon.com/efs/latest/ug/what-is-efs.html> |
-| 4 | - **Practice:** <br>&emsp; + Create S3 Bucket, configure Versioning & Lifecycle Rules <br>&emsp; + Deploy static website on S3 with public Bucket Policy | 07/08/2026 | 07/08/2026 | <https://docs.aws.amazon.com/AmazonS3/latest/userguide/HostingWebsiteOnS3Setup.html> |
-| 5 | - **Practice:** <br>&emsp; + Take EBS Volume Snapshot <br>&emsp; + Expand EBS volume size online and resize Linux ext4 filesystem | 07/09/2026 | 07/09/2026 | <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-expansion.html> |
-| 6 | - **Practice:** <br>&emsp; + Create Amazon EFS File System <br>&emsp; + Mount EFS on 2 EC2 instances concurrently via NFS for shared data access | 07/10/2026 | 07/10/2026 | <https://docs.aws.amazon.com/efs/latest/ug/mounting-fs.html> |
+| 2 | - Learn Amazon DynamoDB: Partition Key, Sort Key, Global Secondary Index (GSI), and On-Demand Capacity mode | 07/06/2026 | 07/06/2026 | <https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html> |
+| 3 | - Learn S3 Lifecycle Rules, S3 Glacier Flexible Retrieval archiving, and Gzip compression for large testcase files | 07/07/2026 | 07/07/2026 | <https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html> |
+| 4 | - **Practice:** <br>&emsp; + Design data schema for `Users`, `Problems`, `Submissions`, `Posts`, and `UserFollows` entities <br>&emsp; + Provision DynamoDB table and GSI `SubmissionUserIndex` | 07/08/2026 | 07/08/2026 | <https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GSI.html> |
+| 5 | - **Practice:** <br>&emsp; + Write Python (boto3) scripts to perform CRUD operations on problems and user data <br>&emsp; + Benchmark low-latency data queries (Single-digit ms) | 07/09/2026 | 07/09/2026 | <https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/dynamodb.html> |
+| 6 | - **Practice:** <br>&emsp; + Upload sample Testcase input/output files to Amazon S3 <br>&emsp; + Configure S3 Lifecycle Rule to archive testcase logs older than 90 days to Glacier | 07/10/2026 | 07/10/2026 | <https://docs.aws.amazon.com/AmazonS3/latest/userguide/lifecycle-configuration-examples.html> |
 
 
 ### Week 4 Achievements:
 
-* Mastered S3 object storage management, automated archiving policies, and static website hosting.
-* Learned online EBS volume resizing and snapshot restoration.
-* Successfully configured Amazon EFS for multi-instance shared file system storage.
+* Designed and deployed DynamoDB On-Demand schema supporting grading evaluation and developer social network features.
+* Programmed CRUD data operations using DynamoDB Python SDK (boto3).
+* Uploaded and managed problem testcase files on Amazon S3 with automated cost-saving lifecycle rules.
