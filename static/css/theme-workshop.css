@@ -818,14 +818,14 @@ div.notices.tip p {
 }
 
 /* ==========================================================================
-   PROPOSAL TABLE COLUMN WIDTH OPTIMIZATIONS FOR HUGO WEB UI
+   1. PROPOSAL PAGE TABLES (body[data-url*="proposal"])
    ========================================================================== */
 
 /* Apply table-layout: fixed to Proposal tables (Tables #2, #3, #4, #5 on Proposal page) */
-#body-inner table:nth-of-type(2),
-#body-inner table:nth-of-type(3),
-#body-inner table:nth-of-type(4),
-#body-inner table:nth-of-type(5) {
+body[data-url*="proposal"] #body-inner table:nth-of-type(2),
+body[data-url*="proposal"] #body-inner table:nth-of-type(3),
+body[data-url*="proposal"] #body-inner table:nth-of-type(4),
+body[data-url*="proposal"] #body-inner table:nth-of-type(5) {
   display: table !important;
   width: 100% !important;
   table-layout: fixed !important;
@@ -833,102 +833,147 @@ div.notices.tip p {
 }
 
 /* 1. Core AWS Services Table (Table #2 on Proposal page) */
-#body-inner table:nth-of-type(2) th:nth-child(1),
-#body-inner table:nth-of-type(2) td:nth-child(1) { width: 5% !important; text-align: center; }
+body[data-url*="proposal"] #body-inner table:nth-of-type(2) th:nth-child(1),
+body[data-url*="proposal"] #body-inner table:nth-of-type(2) td:nth-child(1) { width: 5% !important; text-align: center; }
 
-#body-inner table:nth-of-type(2) th:nth-child(2),
-#body-inner table:nth-of-type(2) td:nth-child(2) { width: 16% !important; }
+body[data-url*="proposal"] #body-inner table:nth-of-type(2) th:nth-child(2),
+body[data-url*="proposal"] #body-inner table:nth-of-type(2) td:nth-child(2) { width: 16% !important; }
 
-#body-inner table:nth-of-type(2) th:nth-child(3),
-#body-inner table:nth-of-type(2) td:nth-child(3) { width: 40.5% !important; }
+body[data-url*="proposal"] #body-inner table:nth-of-type(2) th:nth-child(3),
+body[data-url*="proposal"] #body-inner table:nth-of-type(2) td:nth-child(3) { width: 40.5% !important; }
 
-#body-inner table:nth-of-type(2) th:nth-child(4),
-#body-inner table:nth-of-type(2) td:nth-child(4) { width: 38.5% !important; }
+body[data-url*="proposal"] #body-inner table:nth-of-type(2) th:nth-child(4),
+body[data-url*="proposal"] #body-inner table:nth-of-type(2) td:nth-child(4) { width: 38.5% !important; }
 
 
 /* 2. Phase Breakdown Table (Table #3 on Proposal page) */
-#body-inner table:nth-of-type(3) th:nth-child(1),
-#body-inner table:nth-of-type(3) td:nth-child(1) { width: 16% !important; }
+body[data-url*="proposal"] #body-inner table:nth-of-type(3) th:nth-child(1),
+body[data-url*="proposal"] #body-inner table:nth-of-type(3) td:nth-child(1) { width: 16% !important; }
 
-#body-inner table:nth-of-type(3) th:nth-child(2),
-#body-inner table:nth-of-type(3) td:nth-child(2) { width: 16% !important; }
+body[data-url*="proposal"] #body-inner table:nth-of-type(3) th:nth-child(2),
+body[data-url*="proposal"] #body-inner table:nth-of-type(3) td:nth-child(2) { width: 16% !important; }
 
-#body-inner table:nth-of-type(3) th:nth-child(3),
-#body-inner table:nth-of-type(3) td:nth-child(3) { width: 40% !important; }
+body[data-url*="proposal"] #body-inner table:nth-of-type(3) th:nth-child(3),
+body[data-url*="proposal"] #body-inner table:nth-of-type(3) td:nth-child(3) { width: 40% !important; }
 
-#body-inner table:nth-of-type(3) th:nth-child(4),
-#body-inner table:nth-of-type(3) td:nth-child(4) { width: 28% !important; }
+body[data-url*="proposal"] #body-inner table:nth-of-type(3) th:nth-child(4),
+body[data-url*="proposal"] #body-inner table:nth-of-type(3) td:nth-child(4) { width: 28% !important; }
 
 
 /* 3. Monthly Budget Estimation Table (Table #4 on Proposal page) */
-#body-inner table:nth-of-type(4) th:nth-child(1),
-#body-inner table:nth-of-type(4) td:nth-child(1) { width: 16% !important; }
+body[data-url*="proposal"] #body-inner table:nth-of-type(4) th:nth-child(1),
+body[data-url*="proposal"] #body-inner table:nth-of-type(4) td:nth-child(1) { width: 16% !important; }
 
-#body-inner table:nth-of-type(4) th:nth-child(2),
-#body-inner table:nth-of-type(4) td:nth-child(2) { width: 40% !important; }
+body[data-url*="proposal"] #body-inner table:nth-of-type(4) th:nth-child(2),
+body[data-url*="proposal"] #body-inner table:nth-of-type(4) td:nth-child(2) { width: 40% !important; }
 
-#body-inner table:nth-of-type(4) th:nth-child(3),
-#body-inner table:nth-of-type(4) td:nth-child(3) { width: 28% !important; }
+body[data-url*="proposal"] #body-inner table:nth-of-type(4) th:nth-child(3),
+body[data-url*="proposal"] #body-inner table:nth-of-type(4) td:nth-child(3) { width: 28% !important; }
 
-#body-inner table:nth-of-type(4) th:nth-child(4),
-#body-inner table:nth-of-type(4) td:nth-child(4) { width: 16% !important; text-align: center; }
+body[data-url*="proposal"] #body-inner table:nth-of-type(4) th:nth-child(4),
+body[data-url*="proposal"] #body-inner table:nth-of-type(4) td:nth-child(4) { width: 16% !important; text-align: center; }
 
 
 /* 4. Risk Assessment & Mitigation Table (Table #5 on Proposal page) */
-#body-inner table:nth-of-type(5) th:nth-child(1),
-#body-inner table:nth-of-type(5) td:nth-child(1) { width: 5% !important; text-align: center; }
+body[data-url*="proposal"] #body-inner table:nth-of-type(5) th:nth-child(1),
+body[data-url*="proposal"] #body-inner table:nth-of-type(5) td:nth-child(1) { width: 5% !important; text-align: center; }
 
-#body-inner table:nth-of-type(5) th:nth-child(2),
-#body-inner table:nth-of-type(5) td:nth-child(2) { width: 12% !important; }
+body[data-url*="proposal"] #body-inner table:nth-of-type(5) th:nth-child(2),
+body[data-url*="proposal"] #body-inner table:nth-of-type(5) td:nth-child(2) { width: 12% !important; }
 
-#body-inner table:nth-of-type(5) th:nth-child(3),
-#body-inner table:nth-of-type(5) td:nth-child(3) { width: 34% !important; }
+body[data-url*="proposal"] #body-inner table:nth-of-type(5) th:nth-child(3),
+body[data-url*="proposal"] #body-inner table:nth-of-type(5) td:nth-child(3) { width: 34% !important; }
 
-#body-inner table:nth-of-type(5) th:nth-child(4),
-#body-inner table:nth-of-type(5) td:nth-child(4) { width: 8% !important; text-align: center; }
+body[data-url*="proposal"] #body-inner table:nth-of-type(5) th:nth-child(4),
+body[data-url*="proposal"] #body-inner table:nth-of-type(5) td:nth-child(4) { width: 8% !important; text-align: center; }
 
-#body-inner table:nth-of-type(5) th:nth-child(5),
-#body-inner table:nth-of-type(5) td:nth-child(5) { width: 41% !important; }
+body[data-url*="proposal"] #body-inner table:nth-of-type(5) th:nth-child(5),
+body[data-url*="proposal"] #body-inner table:nth-of-type(5) td:nth-child(5) { width: 41% !important; }
 
 
 /* ==========================================================================
-   WORKSHOP 5.8 & 5.9 VERIFICATION TABLES OPTIMIZATIONS
+   2. WORKSHOP 5.8 CLOUDWATCH PAGE TABLES (body[data-url*="5.8"])
    ========================================================================== */
 
-/* 5.8 CloudWatch Verification Table (3 columns: Component 30%, Resource 36%, Purpose 34%) */
-#body-inner table:has(th:nth-child(3):not(:nth-child(4))) {
+/* Verification Table (Table #4 in section 5.8: Component 30%, Resource 36%, Purpose 34%) */
+body[data-url*="5.8"] #body-inner table:nth-of-type(4),
+body[data-url*="cloudwatch"] #body-inner table:nth-of-type(4) {
   display: table !important;
   width: 100% !important;
   table-layout: fixed !important;
   word-wrap: break-word !important;
 }
-#body-inner table:has(th:nth-child(3):not(:nth-child(4))) th:nth-child(1),
-#body-inner table:has(th:nth-child(3):not(:nth-child(4))) td:nth-child(1) { width: 30% !important; }
+body[data-url*="5.8"] #body-inner table:nth-of-type(4) th:nth-child(1),
+body[data-url*="5.8"] #body-inner table:nth-of-type(4) td:nth-child(1),
+body[data-url*="cloudwatch"] #body-inner table:nth-of-type(4) th:nth-child(1),
+body[data-url*="cloudwatch"] #body-inner table:nth-of-type(4) td:nth-child(1) { width: 30% !important; }
 
-#body-inner table:has(th:nth-child(3):not(:nth-child(4))) th:nth-child(2),
-#body-inner table:has(th:nth-child(3):not(:nth-child(4))) td:nth-child(2) { width: 36% !important; }
+body[data-url*="5.8"] #body-inner table:nth-of-type(4) th:nth-child(2),
+body[data-url*="5.8"] #body-inner table:nth-of-type(4) td:nth-child(2),
+body[data-url*="cloudwatch"] #body-inner table:nth-of-type(4) th:nth-child(2),
+body[data-url*="cloudwatch"] #body-inner table:nth-of-type(4) td:nth-child(2) { width: 36% !important; }
 
-#body-inner table:has(th:nth-child(3):not(:nth-child(4))) th:nth-child(3),
-#body-inner table:has(th:nth-child(3):not(:nth-child(4))) td:nth-child(3) { width: 34% !important; }
+body[data-url*="5.8"] #body-inner table:nth-of-type(4) th:nth-child(3),
+body[data-url*="5.8"] #body-inner table:nth-of-type(4) td:nth-child(3),
+body[data-url*="cloudwatch"] #body-inner table:nth-of-type(4) th:nth-child(3),
+body[data-url*="cloudwatch"] #body-inner table:nth-of-type(4) td:nth-child(3) { width: 34% !important; }
 
-/* 5.9 SNS Verification Table (4 columns: Alarm 34%, Metric 22%, Threshold 14%, SNS Action 30%) */
-#body-inner table:has(th:nth-child(4):not(:nth-child(5))):not(:nth-of-type(2)):not(:nth-of-type(3)):not(:nth-of-type(4)) {
+
+/* ==========================================================================
+   3. WORKSHOP 5.9 SNS PAGE TABLES (body[data-url*="5.9"])
+   ========================================================================== */
+
+/* Verification Table (Table #1 in section 5.9: Alarm 34%, Metric 22%, Threshold 14%, SNS Action 30%) */
+body[data-url*="5.9"] #body-inner table,
+body[data-url*="sns"] #body-inner table {
   display: table !important;
   width: 100% !important;
   table-layout: fixed !important;
   word-wrap: break-word !important;
 }
-#body-inner table:has(th:nth-child(4):not(:nth-child(5))):not(:nth-of-type(2)):not(:nth-of-type(3)):not(:nth-of-type(4)) th:nth-child(1),
-#body-inner table:has(th:nth-child(4):not(:nth-child(5))):not(:nth-of-type(2)):not(:nth-of-type(3)):not(:nth-of-type(4)) td:nth-child(1) { width: 34% !important; }
+body[data-url*="5.9"] #body-inner table th:nth-child(1),
+body[data-url*="5.9"] #body-inner table td:nth-child(1),
+body[data-url*="sns"] #body-inner table th:nth-child(1),
+body[data-url*="sns"] #body-inner table td:nth-child(1) { width: 34% !important; }
 
-#body-inner table:has(th:nth-child(4):not(:nth-child(5))):not(:nth-of-type(2)):not(:nth-of-type(3)):not(:nth-of-type(4)) th:nth-child(2),
-#body-inner table:has(th:nth-child(4):not(:nth-child(5))):not(:nth-of-type(2)):not(:nth-of-type(3)):not(:nth-of-type(4)) td:nth-child(2) { width: 22% !important; }
+body[data-url*="5.9"] #body-inner table th:nth-child(2),
+body[data-url*="5.9"] #body-inner table td:nth-child(2),
+body[data-url*="sns"] #body-inner table th:nth-child(2),
+body[data-url*="sns"] #body-inner table td:nth-child(2) { width: 22% !important; }
 
-#body-inner table:has(th:nth-child(4):not(:nth-child(5))):not(:nth-of-type(2)):not(:nth-of-type(3)):not(:nth-of-type(4)) th:nth-child(3),
-#body-inner table:has(th:nth-child(4):not(:nth-child(5))):not(:nth-of-type(2)):not(:nth-of-type(3)):not(:nth-of-type(4)) td:nth-child(3) { width: 14% !important; }
+body[data-url*="5.9"] #body-inner table th:nth-child(3),
+body[data-url*="5.9"] #body-inner table td:nth-child(3),
+body[data-url*="sns"] #body-inner table th:nth-child(3),
+body[data-url*="sns"] #body-inner table td:nth-child(3) { width: 14% !important; }
 
-#body-inner table:has(th:nth-child(4):not(:nth-child(5))):not(:nth-of-type(2)):not(:nth-of-type(3)):not(:nth-of-type(4)) th:nth-child(4),
-#body-inner table:has(th:nth-child(4):not(:nth-child(5))):not(:nth-of-type(2)):not(:nth-of-type(3)):not(:nth-of-type(4)) td:nth-child(4) { width: 30% !important; }
+body[data-url*="5.9"] #body-inner table th:nth-child(4),
+body[data-url*="5.9"] #body-inner table td:nth-child(4),
+body[data-url*="sns"] #body-inner table th:nth-child(4),
+body[data-url*="sns"] #body-inner table td:nth-child(4) { width: 30% !important; }
+
+
+/* ==========================================================================
+   4. SELF-EVALUATION PAGE TABLE (body[data-url*="self-evaluation"])
+   ========================================================================== */
+
+body[data-url*="self-evaluation"] #body-inner table {
+  display: table !important;
+  width: 100% !important;
+  table-layout: fixed !important;
+  word-wrap: break-word !important;
+}
+body[data-url*="self-evaluation"] #body-inner table th:nth-child(1),
+body[data-url*="self-evaluation"] #body-inner table td:nth-child(1) { width: 6% !important; text-align: center; }
+
+body[data-url*="self-evaluation"] #body-inner table th:nth-child(2),
+body[data-url*="self-evaluation"] #body-inner table td:nth-child(2) { width: 25% !important; }
+
+body[data-url*="self-evaluation"] #body-inner table th:nth-child(3),
+body[data-url*="self-evaluation"] #body-inner table td:nth-child(3) { width: 54% !important; }
+
+body[data-url*="self-evaluation"] #body-inner table th:nth-child(4),
+body[data-url*="self-evaluation"] #body-inner table td:nth-child(4) { width: 15% !important; text-align: center; }
+
 
 
 
