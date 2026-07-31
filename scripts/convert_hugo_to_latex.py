@@ -11,7 +11,7 @@ LUA_FILTER = os.path.join("scripts", "hugo-notice.lua")
 
 SECTION_TITLES_VI = {
     "1-Worklog": "Nhật ký công việc",
-    "2-Proposal": "Đề xuất",
+    "2-Proposal": "Dự án",
     "3-BlogsPosted": "Các bài blogs đã đăng",
     "4-EventParticipated": "Các sự kiện đã tham gia",
     "5-Workshop": "Workshop",
@@ -21,7 +21,7 @@ SECTION_TITLES_VI = {
 
 SECTION_TITLES_EN = {
     "1-Worklog": "Worklog",
-    "2-Proposal": "Proposal",
+    "2-Proposal": "Project",
     "3-BlogsPosted": "Blogs Posted",
     "4-EventParticipated": "Events Participated",
     "5-Workshop": "Workshop",
@@ -764,10 +764,55 @@ def format_tables_with_grid(latex):
     return re.sub(r"\\begin\{longtable\}.*?\\end\{longtable\}", transform_table, latex, flags=re.DOTALL)
 
 
+def optimize_proposal_table_widths(latex):
+    """Adjust specific table column widths in Proposal to ensure optimal layout."""
+    if r"\begin{longtable}" not in latex:
+        return latex
+
+    def replace_table_spec(match):
+        full_table = match.group(0)
+
+        # 1. AWS Core Services Table (4 columns)
+        if ("Dịch vụ AWS" in full_table or "AWS Service" in full_table) and ("STT" in full_table or "#" in full_table) and ("Lợi" in full_table or "Benefits" in full_table):
+            new_spec = r"|>{\centering\arraybackslash}p{0.05\linewidth} |>{\raggedright\arraybackslash}p{0.18\linewidth} |>{\raggedright\arraybackslash}p{0.35\linewidth} |>{\raggedright\arraybackslash}p{0.35\linewidth}|"
+            return re.sub(r"(\\begin\{longtable\}(?:\[[^\]]*\])?)\{(.*?)\}\s*(?=\\toprule|\\hline|\\midrule|\\endhead)", lambda m: f"{m.group(1)}{{{new_spec}}}", full_table, count=1, flags=re.DOTALL)
+
+        # 2. Timeline Phases Table (4 columns)
+        if ("Giai Đoạn" in full_table or "Phase" in full_table) and ("Sản Phẩm Đầu Ra" in full_table or "Deliverables" in full_table):
+            new_spec = r"|>{\raggedright\arraybackslash}p{0.15\linewidth} |>{\raggedright\arraybackslash}p{0.15\linewidth} |>{\raggedright\arraybackslash}p{0.36\linewidth} |>{\raggedright\arraybackslash}p{0.27\linewidth}|"
+            return re.sub(r"(\\begin\{longtable\}(?:\[[^\]]*\])?)\{(.*?)\}\s*(?=\\toprule|\\hline|\\midrule|\\endhead)", lambda m: f"{m.group(1)}{{{new_spec}}}", full_table, count=1, flags=re.DOTALL)
+
+        # 3. Monthly Budget Table (4 columns)
+        if ("Chi Phí Hàng Tháng" in full_table or "Monthly Cost" in full_table or "Ngân Sách" in full_table or "Budget" in full_table) and ("Đơn Giá" in full_table or "Unit Cost" in full_table):
+            new_spec = r"|>{\raggedright\arraybackslash}p{0.18\linewidth} |>{\raggedright\arraybackslash}p{0.34\linewidth} |>{\raggedright\arraybackslash}p{0.26\linewidth} |>{\centering\arraybackslash}p{0.15\linewidth}|"
+            return re.sub(r"(\\begin\{longtable\}(?:\[[^\]]*\])?)\{(.*?)\}\s*(?=\\toprule|\\hline|\\midrule|\\endhead)", lambda m: f"{m.group(1)}{{{new_spec}}}", full_table, count=1, flags=re.DOTALL)
+
+        # 4. Risk Assessment Table (5 columns)
+        if ("Rủi Ro" in full_table or "Risk" in full_table) and ("Biện Pháp Giảm Thiểu" in full_table or "Mitigation" in full_table):
+            new_spec = r"|>{\centering\arraybackslash}p{0.04\linewidth} |>{\raggedright\arraybackslash}p{0.13\linewidth} |>{\raggedright\arraybackslash}p{0.35\linewidth} |>{\centering\arraybackslash}p{0.09\linewidth} |>{\raggedright\arraybackslash}p{0.30\linewidth}|"
+            return re.sub(r"(\\begin\{longtable\}(?:\[[^\]]*\])?)\{(.*?)\}\s*(?=\\toprule|\\hline|\\midrule|\\endhead)", lambda m: f"{m.group(1)}{{{new_spec}}}", full_table, count=1, flags=re.DOTALL)
+
+        # 5. 5.8 CloudWatch Verification Table (3 columns: Component, Resource, Purpose)
+        if ("Thành phần" in full_table or "Component" in full_table) and ("Log Group" in full_table or "Resource" in full_table or "Mục đích" in full_table or "Purpose" in full_table):
+            new_spec = r"|>{\raggedright\arraybackslash}p{0.30\linewidth} |>{\raggedright\arraybackslash}p{0.34\linewidth} |>{\raggedright\arraybackslash}p{0.28\linewidth}|"
+            return re.sub(r"(\\begin\{longtable\}(?:\[[^\]]*\])?)\{(.*?)\}\s*(?=\\toprule|\\hline|\\midrule|\\endhead)", lambda m: f"{m.group(1)}{{{new_spec}}}", full_table, count=1, flags=re.DOTALL)
+
+        # 6. 5.9 SNS Verification Table (4 columns: Alarm, Metric, Threshold, SNS Action)
+        if ("Alarm" in full_table) and ("Metric" in full_table) and ("Ngưỡng" in full_table or "Threshold" in full_table):
+            new_spec = r"|>{\raggedright\arraybackslash}p{0.32\linewidth} |>{\raggedright\arraybackslash}p{0.20\linewidth} |>{\raggedright\arraybackslash}p{0.14\linewidth} |>{\raggedright\arraybackslash}p{0.26\linewidth}|"
+            return re.sub(r"(\\begin\{longtable\}(?:\[[^\]]*\])?)\{(.*?)\}\s*(?=\\toprule|\\hline|\\midrule|\\endhead)", lambda m: f"{m.group(1)}{{{new_spec}}}", full_table, count=1, flags=re.DOTALL)
+
+        return full_table
+
+    return re.sub(r"\\begin\{longtable\}.*?\\end\{longtable\}", replace_table_spec, latex, flags=re.DOTALL)
+
+
 def postprocess_latex(latex):
     latex = re.sub(r"\\label\{[^}]+\}", "", latex)
+    latex = re.sub(r"</?div[^>]*>", "", latex)
     latex = neutralize_body_headings(latex)
     latex = format_tables_with_grid(latex)
+    latex = optimize_proposal_table_widths(latex)
     latex = compact_longtables(latex)
     return latex
 

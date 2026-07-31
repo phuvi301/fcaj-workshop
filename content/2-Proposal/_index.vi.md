@@ -141,7 +141,7 @@ Luồng vận hành từ lúc người dùng tương tác đến khi nhận kế
 
 ---
 
-### Bảng Liệt Kê Các Dịch Vụ AWS Cốt LõiTrong Dự Án
+### Bảng Liệt Kê Các Dịch Vụ AWS Cốt Lõi Trong Dự Án
 
 Dưới đây là bảng tổng hợp các dịch vụ AWS được ứng dụng trong sơ đồ kiến trúc CodExecute:
 
